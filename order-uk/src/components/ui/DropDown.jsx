@@ -1,50 +1,68 @@
-import { ClickAwayListener } from "@mui/material";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function DropDown({
   options = [],
-  mainClassName,
-  boxClassName,
-  itemsClassName,
+  defaultOption = options[0],
+  mainClassName = "",
+  boxClassName = "",
+  itemsClassName = "",
 }) {
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-  const [selectItem, setSelectItem] = useState(options[2] ?? "");
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState(defaultOption ?? "");
+  const containerRef = useRef(null);
 
-  const handleClickAway = () => setIsDropdownVisible(false);
+  // Close the list when the user clicks or taps anywhere outside of it.
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handlePointerDown = (event) => {
+      if (!containerRef.current?.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    // Cleanup: remove the listener when the list closes or the component unmounts.
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [isOpen]);
+
+  const handleSelect = (option) => {
+    setSelected(option);
+    setIsOpen(false);
+  };
 
   return (
     <div className="w-full h-full flex justify-center">
-      <ClickAwayListener onClickAway={handleClickAway}>
-        <div className="relative">
-          <div
-            onClick={() => setIsDropdownVisible((prev) => !prev)}
-            className={`${mainClassName} flex items-center justify-between cursor-pointer`}
-          >
-            {selectItem}
-            <ChevronDown
-              className={`duration-150 ${isDropdownVisible ? "rotate-180" : ""}`}
-            />
-          </div>
+      <div ref={containerRef} className="relative">
+        <button
+          type="button"
+          aria-haspopup="listbox"
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen((prev) => !prev)}
+          className={`${mainClassName} flex items-center justify-between cursor-pointer`}
+        >
+          {selected}
+          <ChevronDown
+            className={`duration-150 ${isOpen ? "rotate-180" : ""}`}
+          />
+        </button>
 
-          {isDropdownVisible && (
-            <div className={`${boxClassName} absolute z-10`}>
-              {options.map((option) => (
-                <div
-                  key={option}
-                  onClick={() => {
-                    setSelectItem(option);
-                    setIsDropdownVisible(false);
-                  }}
-                  className={`${itemsClassName} px-3 py-2 cursor-pointer `}
-                >
-                  {option}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </ClickAwayListener>
+        {isOpen && (
+          <div className={`${boxClassName} absolute z-10`}>
+            {options.map((option) => (
+              <button
+                key={option}
+                type="button"
+                onClick={() => handleSelect(option)}
+                className={`${itemsClassName} block w-full text-left px-3 py-2 cursor-pointer`}
+              >
+                {option}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

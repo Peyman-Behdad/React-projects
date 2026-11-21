@@ -1,32 +1,34 @@
+import Copyright from "../../components/layout/Copyright";
 import Footer from "../../components/layout/Footer";
 import GetDiscount from "../../components/layout/GetDiscount";
 import Navbar from "../../components/layout/Navbar";
 import AboutUs from "./components/AboutUs";
-import Copyright from "./components/Copyright";
 import GetApp from "./components/GetApp";
 import Hero from "./components/Hero";
 import PopularCategories from "./components/PopularCategories";
 import PopularRestaurants from "./components/PopularRestaurants";
-import Status from "./components/Status";
+import Stats from "./components/Stats";
 import UpTo from "./components/UpTo";
 import WithUs from "./components/WithUs";
 
 function HomePage() {
   return (
-    <div>
+    <>
       <GetDiscount />
       <Navbar />
-      <Hero />
-      <UpTo />
-      <PopularCategories />
-      <PopularRestaurants />
-      <GetApp />
-      <WithUs />
-      <AboutUs />
-      <Status />
+      <main>
+        <Hero />
+        <UpTo />
+        <PopularCategories />
+        <PopularRestaurants />
+        <GetApp />
+        <WithUs />
+        <AboutUs />
+        <Stats />
+      </main>
       <Footer />
       <Copyright />
-    </div>
+    </>
   );
 }
 

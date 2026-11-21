@@ -7,15 +7,7 @@ import SecondMessageBox from "../../../assets/images/hero/second-box.svg";
 import ThirdMessageBox from "../../../assets/images/hero/third-box.svg";
 import MessagesBox from "./MessagesBox";
 
-const inputData = [
-  {
-    text: "search",
-    placeholder: "e.g EC4R 3TE",
-    btnClassName: "bg-orange-400 md:px-15 py-3.5 text-white",
-  },
-];
-
-const MessagesBoxData = [
+const messageBoxes = [
   {
     id: 1,
     src: FirstMessageBox,
@@ -43,22 +35,23 @@ function Hero() {
               <p className="md:text-sm text-xs">
                 Order Restaurant food, takeaway and groceries.
               </p>
-              <p className="md:text-5xl text-4xl font-semibold lg:leading-14">
+              <h1 className="md:text-5xl text-4xl font-semibold lg:leading-14">
                 Feast Your Senses,
                 <span className="block text-orange-400">Fast and Fresh</span>
-              </p>
+              </h1>
             </div>
             <div className="space-y-3">
               <p className="text-xs">Enter a postcode to see what we deliver</p>
               <Input
-                text={inputData[0].text}
-                placeholder={inputData[0].placeholder}
-                btnClassName={inputData[0].btnClassName}
+                label="Postcode"
+                placeholder="e.g EC4R 3TE"
+                buttonText="search"
+                buttonClassName="bg-orange-400 md:px-15 py-3.5 text-white"
               />
             </div>
           </div>
           <div className="hidden lg:block">
-            <img className=" w-100 xl:w-135" src={HeroSide} />
+            <img className=" w-100 xl:w-135" src={HeroSide} alt="" />
           </div>
         </div>
         <img
@@ -71,7 +64,7 @@ function Hero() {
           src={HeroPersonBg}
           alt=""
         />
-        {MessagesBoxData.map((item) => (
+        {messageBoxes.map((item) => (
           <MessagesBox
             key={item.id}
             src={item.src}

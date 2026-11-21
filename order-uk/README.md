@@ -1,16 +1,29 @@
-# React + Vite
+# Order.uk
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A food-delivery landing page built with React, Vite, Tailwind CSS 4 and Swiper.
 
-Currently, two official plugins are available:
+## Getting started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev      # start the dev server
+npm run build    # production build into dist/
+npm run lint     # check the code with ESLint
+```
 
-## React Compiler
+## Project structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+src/
+├── assets/images/        SVG images, one folder per page section
+├── components/
+│   ├── layout/           Parts of the page shell: Navbar, Footer, Copyright, GetDiscount bar
+│   └── ui/               Small reusable pieces: Button, Input, DropDown
+└── pages/
+    └── HomePage/
+        ├── HomePage.jsx  Puts the sections together
+        └── components/   Sections and cards used only by the home page
+```
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Rule of thumb: a component lives next to the page that uses it. Move it to
+`src/components/` only when a second page needs it.

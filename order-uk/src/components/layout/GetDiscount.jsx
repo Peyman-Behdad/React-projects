@@ -30,26 +30,12 @@ function GetDiscount({
         <div className="flex items-center gap-x-3">
           <MapPin />
           <p>
-            Regent Street, <span>A4</span>, A4201, London
+            Regent Street, A4, A4201, London
           </p>
           <a href="#" className="text-orange-400 underline">
             Change Location
           </a>
         </div>
-        {/* <div className="bg-green-700 px-10 flex items-center text-white gap-x-5">
-          <div className="border-r py-4">
-            <ShoppingBasket size={45} color="white" />
-          </div>
-          <div className="border-r py-4">
-            <p>23 Items</p>
-          </div>
-          <div className="border-r">
-            <p>GBP 79,89</p>
-          </div>
-          <div>
-            <CircleArrowDown size={45} color="white" />
-          </div>
-        </div> */}
         <div className="inline-flex h-16 items-stretch divide-x divide-white/20 overflow-hidden rounded-bl-xl bg-green-700 text-sm font-semibold text-white">
           {/* Basket icon with check badge */}
           <div className="flex items-center px-5">

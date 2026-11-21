@@ -12,11 +12,17 @@ function GetApp() {
             className="xl:w-167 lg:w-145 md:w-120 w-100 lg:absolute xl:-top-10 bottom-0"
             src={People}
             alt=""
+            loading="lazy"
+            decoding="async"
           />
         </div>
         <div className="space-y-5">
           <div className="flex items-center justify-center">
-            <img className="xl:w-52 lg:w-45 md:w-40 w-35" src={Logo} alt="" />
+            <img
+              className="xl:w-52 lg:w-45 md:w-40 w-35"
+              src={Logo}
+              alt="Order.uk"
+            />
             <span className="font-extrabold xl:text-6xl lg:text-5xl md:text-4xl text-3xl">
               ing is more
             </span>
@@ -24,9 +30,9 @@ function GetApp() {
           <div className="bg-[#03081F] rounded-full py-3 text-center overflow-hidden">
             <p className="text-white xl:text-4xl lg:text-3xl text-xl">
               <span className="text-orange-400 underline cursor-pointer">
-                Perdonalised
-              </span>
-              & Instant
+                Personalised
+              </span>{" "}
+              &amp; Instant
             </p>
           </div>
           <div className="flex flex-col items-center gap-y-2">
@@ -35,12 +41,14 @@ function GetApp() {
               <img
                 className="w-35 xl:w-40 cursor-pointer"
                 src={AppStore}
-                alt=""
+                alt="Download on the App Store"
+                loading="lazy"
               />
               <img
                 className="w-35 xl:w-40 cursor-pointer"
                 src={PlayStore}
-                alt=""
+                alt="Get it on Google Play"
+                loading="lazy"
               />
             </div>
           </div>

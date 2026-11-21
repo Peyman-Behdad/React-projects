@@ -12,14 +12,19 @@ const list = [
 ];
 
 const faq = [
-  "How does Order.UK work?",
-  "What payment methods are accepted?",
-  "Can I track my order in real-time?",
-  <>
-    Are there any special discounts or <br />
-    promotions available?
-  </>,
-  "Is Order.UK available in my area?",
+  { id: 1, question: "How does Order.UK work?" },
+  { id: 2, question: "What payment methods are accepted?" },
+  { id: 3, question: "Can I track my order in real-time?" },
+  {
+    id: 4,
+    question: (
+      <>
+        Are there any special discounts or <br />
+        promotions available?
+      </>
+    ),
+  },
+  { id: 5, question: "Is Order.UK available in my area?" },
 ];
 
 const cardItems = [
@@ -33,13 +38,13 @@ const cardItems = [
     id: 2,
     title: "Track Progress",
     image: track,
-    description: "Your can track your order status with delivery time",
+    description: "You can track your order status with delivery time",
   },
   {
     id: 3,
     title: "Get your Order!",
     image: getOrder,
-    description: "Receive your order at a lighting fast speed!",
+    description: "Receive your order at a lightning fast speed!",
   },
 ];
 
@@ -56,7 +61,7 @@ function AboutUs() {
           <ul className="hidden md:flex items-center text-sm mt-4 lg:mt-0">
             {list.map((item, index) => (
               <li
-                key={item.key}
+                key={item}
                 onClick={() => setActiveList(index)}
                 className={`duration-150 px-5 xl:px-8 py-3 cursor-pointer rounded-full ${activeList === index ? "border border-orange-400 font-bold" : ""}`}
               >
@@ -70,11 +75,11 @@ function AboutUs() {
             <ul className="text-center space-y-5 text-sm font-bold">
               {faq.map((item, index) => (
                 <li
-                  key={item.key}
+                  key={item.id}
                   onClick={() => setActiveIndex(index)}
                   className={`cursor-pointer duration-150 py-3 ${activeIndex === index ? "bg-orange-400 rounded-full" : ""}`}
                 >
-                  {item}
+                  {item.question}
                 </li>
               ))}
             </ul>
